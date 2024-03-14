@@ -1,0 +1,11 @@
+.section_home{
+    display: flex;
+    align-items: center;
+   margin: 5px;
+}
+
+.section_home img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
