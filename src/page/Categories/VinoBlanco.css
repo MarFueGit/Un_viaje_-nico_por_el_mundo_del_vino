@@ -1,0 +1,28 @@
+.wine-blanco {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    border-style: dotted ;
+    border-color: #8e2800;
+    
+  }
+  .wine-blanco p{
+      line-height: 30px;
+      padding: 10px;
+      color: var(--very-ligtt-pink);
+     
+  }
+  .wine-blanco img{
+    width: 420px;
+    height: auto;
+      padding: 10px;
+      border-radius: 50px;
+      transition: transform 0.3s ease-in-out;
+      object-fit: cover;
+    
+  
+  }
+  .wine-blanco img:hover{
+      transform: scale(1.03);
+  }
+  

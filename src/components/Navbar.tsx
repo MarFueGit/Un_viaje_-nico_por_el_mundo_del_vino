@@ -1,6 +1,6 @@
 import React from "react";
 import LogoMenu from "../assets/icons/icon_menu.svg";
-import LogoYard from "../assets/img/imagenVino.jpg";
+import LogoYard from "../assets/img/imagenVino-removebg-preview.png";
 import IconCart from "../assets/icons/icon_shopping_cart.svg";
 import "./Navbar.css";
 import Search from "./Search";
@@ -29,8 +29,8 @@ export default function Navbar() {
         <div className="navbar-right">
           <ul>
             <li className="navbar-shopping-cart">
-              <img src={IconCart} alt="" />
-              {/* <div>2</div> */}
+              <img src={IconCart} alt="carrito de compra" />
+              <div>0</div>
             </li>
           </ul>
         </div>

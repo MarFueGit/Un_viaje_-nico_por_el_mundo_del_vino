@@ -3,6 +3,7 @@
   top: 50%;
   left: 10px;
   font-size: 20px;
+  color: var(--hospital-green);
   transform: translateY(-50%);
   z-index: 1; /* asegúrando de que el icono está encima de la entrada */
 }
@@ -19,6 +20,10 @@ input[type="text"] {
   width: 400px;
   padding: 10px;
   padding-left: 30px; /*Ajuste el relleno para acomodar el icono */
- border-radius: 6px;
- 
+  border-radius: 6px;
+  border: 1px solid var(--hospital-green);
+}
+input[type="text"]:focus{
+  outline: none; /* Eliminar el borde de enfoque */
+  border-color: var(--hospital-green)
 }
