@@ -9,15 +9,17 @@ import Footer from "../../components/Footer";
 import { wineStore } from "../../state/wineStore";
 
 function Home() {
-  const wines = wineStore((state) => state.wines);
+  const wines = wineStore((state) => state.wines.data);
   const setWines = wineStore((state) => state.setWines);
+  const nextPage = wineStore((state) => state.wines.nextPage);
+  const prevPage = wineStore((state) => state.wines.prevPage);
 
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
 
   useEffect(() => {
     getWinesService(page, pageSize)
-      .then((response: IResponseWines) => setWines(response?.response.data))
+      .then((response: IResponseWines) => setWines(response?.response))
       .catch((error) => console.error(error));
   }, [page, pageSize]);
 
@@ -25,15 +27,16 @@ function Home() {
     <main>
       <section className="section_home">
         <img src={imgVino} alt="imagen vino" />
-        
       </section>
       <Products data={wines} />
       <Pagination
         page={page}
         pageSize={pageSize}
         onChangePageSize={(page: number) => setPageSize(page)}
-        onNext={() => setPage(page + 1)}
-        onBack={() => setPage(page - 1)}
+        onNext={() => setPage(nextPage)}
+        onBack={() => setPage(prevPage)}
+        disabledBack={prevPage === null}
+        disabledNext={nextPage === null}
       />
       <hr />
       <Footer />

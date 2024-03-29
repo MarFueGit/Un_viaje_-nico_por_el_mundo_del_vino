@@ -25,23 +25,27 @@ function Footer() {
         <a
           onClick={(e) => {
             e.preventDefault();
-            navigate("/categories/vino-tinto");
+            navigate("/categories/Tinto");
           }}
         >
           <img src={imgVino} alt="imagen vino tinto" />
           <p>Tinto</p>
         </a>
-        <a  onClick={(e) => {
+        <a
+          onClick={(e) => {
             e.preventDefault();
-            navigate("/categories/vino-blanco");
-          }}>
+            navigate("/categories/Blanco");
+          }}
+        >
           <img src={imgVinoB} alt="imagen vino blanco" />
           <p>Blanco</p>
         </a>
-        <a  onClick={(e) => {
+        <a
+          onClick={(e) => {
             e.preventDefault();
-            navigate("/categories/vino-rosado");
-          }}>
+            navigate("/categories/Rosado");
+          }}
+        >
           <img src={imgVinoR} alt="imagen vino rosado" />
           <p>Rosado</p>
         </a>

@@ -5,6 +5,7 @@ import Home from "../page/Home/Home";
 import VinoTinto from "../page/Categories/VinoTinto";
 import VinoBlanco from "../page/Categories/VinoBlanco";
 import VinoRosado from "../page/Categories/VinoRosado";
+import ShortCart from "../page/ShopCart/ShortCart";
 
 const router = createBrowserRouter([
   {
@@ -17,16 +18,20 @@ const router = createBrowserRouter([
     )
   },
   {
-    path: "/categories/vino-tinto",
+    path: "/categories/Tinto",
     element: <VinoTinto />
   },
   {
-    path: "/categories/vino-blanco",
+    path: "/categories/Blanco",
     element: <VinoBlanco />
   },
   {
-    path: "/categories/vino-rosado",
+    path: "/categories/Rosado",
     element: <VinoRosado />
+  },
+  {
+    path: "/shopCart",
+    element: <ShortCart />
   }
 ]);
 

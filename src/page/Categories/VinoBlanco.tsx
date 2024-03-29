@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import imgVino from "../../assets/img/pexels-taha-samet-arslan-7627416.jpg";
 import "./VinoBlanco.css";
+import { wineStore } from "../../state/wineStore";
+import { getWinesByTypeService } from "../../services/wines.service";
+import { IResponseWines } from "../../types/Wine";
+import Products from "../../components/Products";
+import Pagination from "../../components/Pagination";
 
 function VinoBlanco() {
+  const wines = wineStore((state) => state.wines.data);
+  const setWines = wineStore((state) => state.setWines);
+  const nextPage = wineStore((state) => state.wines.nextPage);
+  const prevPage = wineStore((state) => state.wines.prevPage);
+
+  const [page, setPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(5);
+
+  useEffect(() => {
+    getWinesByTypeService("Blanco", page, pageSize)
+      .then((response: IResponseWines) => setWines(response?.response.data))
+      .catch((error) => console.error(error));
+  }, [page, pageSize]);
+
   return (
     <section>
       <Navbar />
@@ -37,6 +56,16 @@ function VinoBlanco() {
           y acidez del vino blanco.
         </p>
       </div>
+      <Products data={wines} />
+      <Pagination
+        page={page}
+        pageSize={pageSize}
+        onChangePageSize={(page: number) => setPageSize(page)}
+        onNext={() => setPage(nextPage)}
+        onBack={() => setPage(prevPage)}
+        disabledBack={prevPage === null}
+        disabledNext={nextPage === null}
+      />
     </section>
   );
 }

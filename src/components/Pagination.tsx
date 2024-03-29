@@ -12,6 +12,8 @@ interface PaginationProps {
   onChangePageSize: (pageSize: number) => void;
   onNext: () => void;
   onBack: () => void;
+  disabledBack: boolean;
+  disabledNext: boolean;
 }
 
 function Pagination({
@@ -19,7 +21,9 @@ function Pagination({
   pageSize,
   onChangePageSize,
   onNext,
-  onBack
+  onBack,
+  disabledBack,
+  disabledNext
 }: PaginationProps) {
   return (
     <section className="selection">
@@ -36,9 +40,13 @@ function Pagination({
         <option value="100">100 registros por pág</option>
       </select>
       <div className="icono-pagination">
-        <FontAwesomeIcon icon={faChevronCircleLeft} onClick={() => onBack()} />
+        <button onClick={() => onBack()} disabled={disabledBack}>
+          <FontAwesomeIcon icon={faChevronCircleLeft} />
+        </button>
         <p>Página {page}</p>
-        <FontAwesomeIcon icon={faChevronCircleRight} onClick={() => onNext()} />
+        <button onClick={() => onNext()} disabled={disabledNext}>
+          <FontAwesomeIcon icon={faChevronCircleRight} />
+        </button>
       </div>
     </section>
   );

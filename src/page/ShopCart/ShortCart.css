@@ -1,0 +1,186 @@
+.section-principal {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+}
+
+.item-left {
+  width: 40%;
+  background: #ebedef;
+  margin: 1px;
+}
+.subtitles-items {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--very-ligtt-pink);
+}
+.subtitles-items p {
+  font-size: 1.8rem;
+}
+.div-right {
+  width: 20%;
+  height: auto;
+  background-color: #d6dbdf;
+  margin: 1px;
+}
+.items-right {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+ 
+}
+.items-right p{
+  line-height: 80px;
+ 
+}
+.div-right h2 {
+  text-align: center;
+  border-bottom: 2px solid var(--very-ligtt-pink);
+  font-size: 1.8rem;
+}
+.div-right p{
+padding-left: 20px;
+}
+.div-right select {
+  width: 252px; /* Ancho personalizado */
+  padding: 10px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border: 1px solid #8e2800; /* Borde */
+  border-radius: 5px; /* Borde redondeado */
+  background-color: #f9f9f9; /* Color de fondo */
+  color: #333; /* Color de texto */
+  margin-left: 20px;
+  margin-top: 20px;
+  
+}
+.div-right label{
+  padding-left: 20px;
+  line-height: 40px;
+ 
+}
+/* Estilo al hacer clic en el select */
+select:focus {
+  outline: none; /* Eliminar el borde de enfoque */
+  border-color: #8e2800; /* Cambiar color del borde en enfoque */
+}
+.div-right input{
+  width: 252px;
+  padding: 10px;
+  margin-left: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--hospital-green);
+  
+}
+.div-right button{
+  margin-left: 20px;
+  padding: 5px;
+  width:90px;
+  margin-top: 10px;
+  background: #FFB03B;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.order-total{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+  margin-top: 40px;
+}
+.container-cart {
+  display: flex;
+}
+
+.table {
+  width: 100%;
+  max-width: 910px;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+}
+
+.table caption {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 8px 0px;
+}
+
+.table tr {
+  border: 1px solid #e9d8a6;
+}
+
+.table th,
+.table td {
+  font-size: 0.7em;
+  padding: 8px;
+  text-align: center;
+}
+
+.table button {
+  cursor: pointer;
+  width: 100%;
+  max-width: 100px;
+  padding: 7px;
+  height: auto;
+  font-size: 1em;
+  border: none;
+}
+.table svg {
+  font-size: 20px;
+}
+
+.table thead th {
+  background-color: #005f73;
+  color: #dddddd;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(10, 147, 150);
+  color: #ddd;
+}
+
+.table tbody td:hover {
+  background-color: rgba(0, 95, 115);
+}
+@media screen and (max-width: 600px) {
+  .container-table {
+    padding-top: 100px;
+  }
+  .table {
+    border: 0px;
+  }
+  .table caption {
+    font-size: 22px;
+  }
+  .table thead {
+    display: none;
+  }
+  .table tr {
+    margin-bottom: 8px;
+    border-bottom: 4px solid #ee9b00;
+    display: block;
+  }
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+  .table td {
+    display: block;
+    border-bottom: 1px solid #ee9b00;
+    text-align: right;
+  }
+  .table td:last-child {
+    border-bottom: 0px;
+  }
+  .table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    float: left;
+  }
+}
