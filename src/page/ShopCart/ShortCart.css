@@ -3,18 +3,20 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  padding-top: 3%;
+  align-items: center;
 }
 
 .item-left {
-  width: 40%;
+  width: 50%;
   background: #ebedef;
   margin: 1px;
+  height: auto;
 }
 .subtitles-items {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid var(--very-ligtt-pink);
+  color: var(--very-ligtt-pink);
 }
 .subtitles-items p {
   font-size: 1.8rem;
@@ -23,25 +25,24 @@
   width: 20%;
   height: auto;
   background-color: #d6dbdf;
-  margin: 1px;
+
+  color: var(--very-ligtt-pink);
 }
 .items-right {
   display: flex;
   justify-content: space-between;
   margin-right: 30px;
- 
 }
-.items-right p{
-  line-height: 80px;
- 
+.items-right p {
+  line-height: 70px;
 }
 .div-right h2 {
   text-align: center;
   border-bottom: 2px solid var(--very-ligtt-pink);
   font-size: 1.8rem;
 }
-.div-right p{
-padding-left: 20px;
+.div-right p {
+  padding-left: 20px;
 }
 .div-right select {
   width: 252px; /* Ancho personalizado */
@@ -50,52 +51,49 @@ padding-left: 20px;
   border: 1px solid #8e2800; /* Borde */
   border-radius: 5px; /* Borde redondeado */
   background-color: #f9f9f9; /* Color de fondo */
-  color: #333; /* Color de texto */
+  color: var(--very-ligtt-pink);
   margin-left: 20px;
   margin-top: 20px;
-  
 }
-.div-right label{
+.div-right label {
   padding-left: 20px;
   line-height: 40px;
- 
 }
 /* Estilo al hacer clic en el select */
 select:focus {
   outline: none; /* Eliminar el borde de enfoque */
   border-color: #8e2800; /* Cambiar color del borde en enfoque */
 }
-.div-right input{
+.div-right input {
   width: 252px;
   padding: 10px;
   margin-left: 20px;
   border-radius: 6px;
   border: 1px solid var(--hospital-green);
-  
 }
-.div-right button{
+.div-right button {
   margin-left: 20px;
   padding: 5px;
-  width:120px;
+  width: 120px;
   margin-top: 10px;
-  background: #FFB03B;
+  background: #ffb03b;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  
-  
+  color: var(--very-ligtt-pink);
+  margin-bottom: 5px;
 }
-.order-total{
+.order-total {
   display: flex;
   justify-content: space-between;
   margin-right: 30px;
   margin-top: 20px;
   border-top: 2px solid var(--very-ligtt-pink);
- 
 }
-.order-total p{
+.order-total p {
   line-height: 40px;
 }
+
 .table {
   width: 100%;
   max-width: 910px;
@@ -104,6 +102,7 @@ select:focus {
   margin: 0;
   padding: 0;
   table-layout: fixed;
+  color: var(--very-ligtt-pink);
 }
 
 .table caption {
@@ -126,29 +125,35 @@ select:focus {
 
 .table button {
   cursor: pointer;
-  width: 100%;
-  max-width: 100px;
-  padding: 7px;
+ width: 90px;
+padding: 5px;
   height: auto;
   font-size: 1em;
   border: none;
+  border-radius: 8px;
 }
 .table svg {
-  font-size: 20px;
+  font-size: 18px;
+  border: 1px solid var(--very-ligtt-pink);
+  padding: 1px;
+}
+.table span {
+  padding: 10px;
+  font-size: 16px;
 }
 
 .table thead th {
-  background-color: #005f73;
+  background-color: #b64926;
   color: #dddddd;
 }
 
 .table tbody tr:hover {
-  background-color: rgba(10, 147, 150);
+  background-color: #b64926;
   color: #ddd;
 }
 
 .table tbody td:hover {
-  background-color: rgba(0, 95, 115);
+  background-color: #8E2800;
 }
 @media screen and (max-width: 600px) {
   .container-table {

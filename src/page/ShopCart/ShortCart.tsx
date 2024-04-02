@@ -13,16 +13,16 @@ function ShortCart() {
         <div className="item-left">
           <div className="subtitles-items">
             <p>Mi carrito de compra </p>
-            <p>3 Items</p>
+            <p>3 productos</p>
           </div>
           <table className="table">
-            <caption>ITEMS Info</caption>
+            <caption>Información del producto </caption>
             <thead>
               <tr>
                 <th>Producto</th>
                 <th>Nombre</th>
                 <th>Cantidad</th>
-                <th>Price</th>
+                <th>Precio</th>
                 <th>Total</th>
               </tr>
             </thead>
@@ -37,13 +37,14 @@ function ShortCart() {
                   />
                 </td>
                 <td data-label="Nombre">
-                  Vino tinto{" "}
+                  Vino tinto 
                   <button>
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
                 <td data-label="Cantidad">
-                  <FontAwesomeIcon icon={faMinus} />2
+                  <FontAwesomeIcon icon={faMinus} />
+                  <span>2</span>
                   <FontAwesomeIcon icon={faPlus} />
                 </td>
                 <td data-label="Price">$150.00</td>
@@ -65,7 +66,8 @@ function ShortCart() {
                   </button>
                 </td>
                 <td data-label="Cantidad">
-                  <FontAwesomeIcon icon={faMinus} />2
+                  <FontAwesomeIcon icon={faMinus} />
+                  <span>2</span>
                   <FontAwesomeIcon icon={faPlus} />
                 </td>
                 <td data-label="Price">$150.00</td>
@@ -87,7 +89,8 @@ function ShortCart() {
                   </button>
                 </td>
                 <td data-label="Cantidad">
-                  <FontAwesomeIcon icon={faMinus} />2
+                  <FontAwesomeIcon icon={faMinus} />
+               <span>2</span>
                   <FontAwesomeIcon icon={faPlus} />
                 </td>
                 <td data-label="Price">$150.00</td>

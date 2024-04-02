@@ -3,6 +3,13 @@ nav {
   justify-content: space-between;
   padding: 0 24px;
   border-bottom: 2px solid var(--very-ligtt-pink);
+  background: #468966;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
+  
 }
 .menu {
   display: none;
@@ -29,16 +36,16 @@ nav {
 .navbar-left ul li a,
 .navbar-right ul li a {
   text-decoration: none;
-  color: var(--very-ligtt-pink);
-  border: 1px solid var(--white);
+  color: var(--white);
+ 
   padding: 8px;
   border-radius: 8px;
   margin: 10px;
 }
 .navbar-left ul li a:hover,
 .navbar-right ul li a:hover {
-  border: 2px solid var(--hospital-green);
-  color: var(--hospital-green);
+  border: 2px solid var(--white);
+  color: var(--white);
 }
 
 .navbar-shopping-cart {
@@ -49,7 +56,7 @@ nav {
 .navbar-shopping-cart div {
   width: 20px;
   height: 20px;
-  background-color: var(--hospital-green);
+  background-color: var(--white);
   border-radius: 50%;
   font-size: var(--sm);
   font-weight: bold;
@@ -59,10 +66,11 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--white);;
+  
 }
 .navbar-shopping-cart img{
   width: 35px;
+ 
 }
 @media (max-width: 640px) {
   .menu {
