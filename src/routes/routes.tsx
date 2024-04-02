@@ -6,6 +6,7 @@ import VinoTinto from "../page/Categories/VinoTinto";
 import VinoBlanco from "../page/Categories/VinoBlanco";
 import VinoRosado from "../page/Categories/VinoRosado";
 import ShortCart from "../page/ShopCart/ShortCart";
+import ProductView from "../page/ProductView/ProductView";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/shopCart",
     element: <ShortCart />
+  },
+  {
+    path: "/product/details",
+    element: <ProductView />
   }
 ]);
 

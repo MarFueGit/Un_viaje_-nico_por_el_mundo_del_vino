@@ -9,25 +9,23 @@ h1 {
   width: 80%;
   display: flex;
   margin: auto;
-  border-style: dotted ;
+  border-style: dotted;
   border-color: #8e2800;
-  
 }
-.wine-tinto p{
-    line-height: 30px;
-    padding: 10px;
-    color: var(--very-ligtt-pink);
-   
+.wine-tinto p {
+  line-height: 30px;
+  padding: 10px;
+  color: var(--very-ligtt-pink);
 }
-.wine-tinto img{
+.wine-tinto img {
   width: 420px;
   height: auto;
-    padding: 10px;
-    border-radius: 50px;
-    transition: transform 0.3s ease-in-out;
-  
+  padding: 10px;
+  border-radius: 50px;
+  transition: transform 0.3s ease-in-out;
 
 }
-.wine-tinto img:hover{
-    transform: scale(1.03);
+.wine-tinto img:hover {
+  transform: scale(1.03);
+  
 }

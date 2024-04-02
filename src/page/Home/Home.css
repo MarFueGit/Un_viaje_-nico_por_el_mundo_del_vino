@@ -2,7 +2,17 @@
     display: flex;
     align-items: center;
    margin: 5px;
+   position: relative;
   
+}
+.section_home h2{
+ transform: translateY(-50%);
+ z-index: 1;
+ position: absolute;
+ top: 450px;
+ left: 5%;
+ color: white;
+ letter-spacing: 10px;
 }
 
 .section_home img {
@@ -10,5 +20,5 @@
   height: 100%;
   object-fit: cover;
   border-radius: 8px; 
-  
+   
 }

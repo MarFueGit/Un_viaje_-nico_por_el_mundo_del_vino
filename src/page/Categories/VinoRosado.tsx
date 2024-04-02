@@ -19,7 +19,7 @@ function VinoRosado() {
 
   useEffect(() => {
     getWinesByTypeService("Rosado", page, pageSize)
-      .then((response: IResponseWines) => setWines(response?.response.data))
+      .then((response: IResponseWines) => setWines(response?.response))
       .catch((error) => console.error(error));
   }, [page, pageSize]);
 

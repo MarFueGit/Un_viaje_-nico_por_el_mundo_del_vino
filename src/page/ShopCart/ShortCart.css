@@ -76,23 +76,26 @@ select:focus {
 .div-right button{
   margin-left: 20px;
   padding: 5px;
-  width:90px;
+  width:120px;
   margin-top: 10px;
   background: #FFB03B;
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  
+  
 }
 .order-total{
   display: flex;
   justify-content: space-between;
   margin-right: 30px;
-  margin-top: 40px;
+  margin-top: 20px;
+  border-top: 2px solid var(--very-ligtt-pink);
+ 
 }
-.container-cart {
-  display: flex;
+.order-total p{
+  line-height: 40px;
 }
-
 .table {
   width: 100%;
   max-width: 910px;

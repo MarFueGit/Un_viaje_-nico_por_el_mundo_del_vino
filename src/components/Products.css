@@ -19,6 +19,7 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* sombra */
   border-radius: 8px;
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 .list-products img {
 width: 150px;
@@ -33,6 +34,7 @@ height: auto;
 
 .Tinto {
   background: #8e2800;
+
 }
 .Rosado {
   background: #ffb03b;

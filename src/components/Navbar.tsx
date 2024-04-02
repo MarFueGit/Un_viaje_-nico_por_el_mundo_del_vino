@@ -14,7 +14,6 @@ export default function Navbar() {
         <img src={LogoMenu} alt="menu" className="menu" />
         <div className="navbar-left">
           <img src={LogoYard} alt="logo" className="logo" />
-          <h2 className="title">UN VIAJE ÚNICO POR EL MUNDO DEL VINO</h2>
           <ul>
             <li>
               <a

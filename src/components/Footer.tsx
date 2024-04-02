@@ -1,56 +1,43 @@
 import React from "react";
-import imgVino from "../assets/img/imgTin.jpg";
-import imgVinoR from "../assets/img/imgRosado2.jpg";
-import imgVinoB from "../assets/img/vinos-para-carnes-blancas-3.jpg";
+import LogoYard from "../assets/img/imagenVino-removebg-preview.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faYoutube
+} from "@fortawesome/free-brands-svg-icons";
+
 import "./Footer.css";
-import { useNavigate } from "react-router-dom";
 
 function Footer() {
-  const navigate = useNavigate();
-
   return (
-    <footer>
-      <h2>
-        ¿Qué vino servir? Blanco, tinto, rosado ...... Escoge tu favorito.
-      </h2>
-      <p>
-        Los vinos blancos, rosados y tintos se diferencian por su color, pero
-        también por la calidad de la uva, la variedad, el clima, el suelo, el
-        tipo y duración de la maceración, la crianza… A grandes rasgos, cada uno
-        de estos vinos está orientado a determinado tipo de guisos o alimentos.
-        El público ha llegado a interiorizar estas ideas clave, que hoy en día
-        están bastante asumidas:
-      </p>
-      <div className="list-wine">
-        <a
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/categories/Tinto");
-          }}
-        >
-          <img src={imgVino} alt="imagen vino tinto" />
-          <p>Tinto</p>
-        </a>
-        <a
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/categories/Blanco");
-          }}
-        >
-          <img src={imgVinoB} alt="imagen vino blanco" />
-          <p>Blanco</p>
-        </a>
-        <a
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/categories/Rosado");
-          }}
-        >
-          <img src={imgVinoR} alt="imagen vino rosado" />
-          <p>Rosado</p>
-        </a>
-      </div>
-    </footer>
+    <>
+      <footer>
+        <img src={LogoYard} alt="logo" className="logo" />
+        <h1>Viñedo un viaje único por el mundo</h1>
+        <div className="social-media">
+          <a href="">
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a href="">
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a href="">
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href="">
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
+        </div>
+        <div className="terminos">
+          <p>POLITICA DE PRIVACIDAD</p>
+          <p>TÉRMINOS Y CONDICIONES</p>
+          <p>POLITICA DE COOKIES</p>
+        </div>
+        <span>Huehuetoca Edo.de México codigo postal 54480 México</span>
+      </footer>
+    </>
   );
 }
 

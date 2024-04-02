@@ -5,8 +5,9 @@ import { getWinesService } from "../../services/wines.service";
 import { IResponseWines } from "../../types/Wine";
 import Products from "../../components/Products";
 import Pagination from "../../components/Pagination";
-import Footer from "../../components/Footer";
+import Categories from "../../components/Categories";
 import { wineStore } from "../../state/wineStore";
+import Footer from "../../components/Footer";
 
 function Home() {
   const wines = wineStore((state) => state.wines.data);
@@ -26,6 +27,7 @@ function Home() {
   return (
     <main>
       <section className="section_home">
+       <h2 className="title">UN VIAJE ÚNICO POR EL MUNDO DEL VINO</h2>
         <img src={imgVino} alt="imagen vino" />
       </section>
       <Products data={wines} />
@@ -39,6 +41,7 @@ function Home() {
         disabledNext={nextPage === null}
       />
       <hr />
+      <Categories />
       <Footer />
     </main>
   );

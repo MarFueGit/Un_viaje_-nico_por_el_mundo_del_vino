@@ -10,12 +10,7 @@ nav {
 .logo {
   width: 70px;
 }
-.navbar-left h2 {
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  color: var(--very-ligtt-pink);
-}
+
 .navbar-left ul,
 .navbar-right ul {
   list-style: none;
