@@ -5,8 +5,10 @@ import IconCart from "../assets/icons/icon_shopping_cart.svg";
 import "./Navbar.css";
 import Search from "./Search";
 import { useNavigate } from "react-router-dom";
+import { shopCartStore } from "../state/shopCartStore";
 
 export default function Navbar() {
+  const quantity = shopCartStore((state) => state.quantity);
   const navigate = useNavigate();
   return (
     <div>
@@ -69,7 +71,7 @@ export default function Navbar() {
                   navigate("/shopCart");
                 }}
               />
-              <div>0</div>
+              <div>{quantity}</div>
             </li>
           </ul>
         </div>

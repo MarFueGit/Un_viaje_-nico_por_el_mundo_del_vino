@@ -1,11 +1,30 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import imgVino from "../../assets/img/botellaVino.jpg";
 import "./ShortCart.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { shopCartStore, ICartItem } from "../../state/shopCartStore";
+import EmptyCart from "../../components/EmptyCart/EmptyCart";
 
 function ShortCart() {
+  const products = shopCartStore((state) => state.wines);
+  const quantity = shopCartStore((state) => state.quantity);
+  const total = shopCartStore((state) => state.total);
+  const addProduct = shopCartStore((state) => state.addProduct);
+  const deleteProduct = shopCartStore((state) => state.deleteProduct);
+  const reduceProductQuantity = shopCartStore(
+    (state) => state.reduceProductQuantity
+  );
+
+  if (quantity === 0) {
+    return (
+      <>
+        <Navbar />
+        <EmptyCart />
+      </>
+    );
+  }
+
   return (
     <>
       <Navbar />
@@ -13,7 +32,7 @@ function ShortCart() {
         <div className="item-left">
           <div className="subtitles-items">
             <p>Mi carrito de compra </p>
-            <p>3 productos</p>
+            <p>{quantity} productos</p>
           </div>
           <table className="table">
             <caption>Información del producto </caption>
@@ -27,98 +46,67 @@ function ShortCart() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td data-label="imagen">
-                  <img
-                    src={imgVino}
-                    width={"80px"}
-                    height={"80px"}
-                    alt="imagen"
-                  />
-                </td>
-                <td data-label="Nombre">
-                  Vino tinto 
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-                <td data-label="Cantidad">
-                  <FontAwesomeIcon icon={faMinus} />
-                  <span>2</span>
-                  <FontAwesomeIcon icon={faPlus} />
-                </td>
-                <td data-label="Price">$150.00</td>
-                <td data-label="Total">$300.00</td>
-              </tr>
-              <tr>
-                <td data-label="imagen">
-                  <img
-                    src={imgVino}
-                    width={"80px"}
-                    height={"80px"}
-                    alt="imagen"
-                  />
-                </td>
-                <td data-label="Nombre">
-                  Vino tinto
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-                <td data-label="Cantidad">
-                  <FontAwesomeIcon icon={faMinus} />
-                  <span>2</span>
-                  <FontAwesomeIcon icon={faPlus} />
-                </td>
-                <td data-label="Price">$150.00</td>
-                <td data-label="Total">$300.00</td>
-              </tr>
-              <tr>
-                <td data-label="imagen">
-                  <img
-                    src={imgVino}
-                    width={"80px"}
-                    height={"80px"}
-                    alt="imagen"
-                  />
-                </td>
-                <td data-label="Nombre">
-                  Vino tinto
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-                <td data-label="Cantidad">
-                  <FontAwesomeIcon icon={faMinus} />
-               <span>2</span>
-                  <FontAwesomeIcon icon={faPlus} />
-                </td>
-                <td data-label="Price">$150.00</td>
-                <td data-label="Total">$300.00</td>
-              </tr>
+              {products.map((product: ICartItem, i: number) => (
+                <tr key={i}>
+                  <td data-label="imagen">
+                    <img
+                      src={product.product.img}
+                      width={"80px"}
+                      height={"80px"}
+                      alt="imagen"
+                    />
+                  </td>
+                  <td data-label="Nombre">
+                    {product.product.name}
+                    <button>
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        onClick={() => deleteProduct(product.product.id)}
+                      />
+                    </button>
+                  </td>
+                  <td data-label="Cantidad">
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      onClick={() =>
+                        reduceProductQuantity(product.product.id, 1)
+                      }
+                    />
+                    <span>{product.quantity}</span>
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      onClick={() => addProduct(product.product, 1)}
+                    />
+                  </td>
+                  <td data-label="Price">${product.product.price}</td>
+                  <td data-label="Total">
+                    ${product.quantity * product.product.price}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
         <div className="div-right">
-          <h2>Order Summary</h2>
+          <h2>Orden</h2>
           <div className="items-right">
-            <p>ITEMS 3</p>
-            <p>$ 519</p>
+            <p>Productos {quantity}</p>
+            <p>${total}</p>
           </div>
-          <p>SHIPPING</p>
+          <p>Entrega a domicilio</p>
           <select name="" id="">
-            <option value="5"> 5 registros por pág</option>
-            <option value="10"> 10 registros por pág</option>
-            <option value="15"> 15 registros por pág</option>
+            <option value="5"> Fedex</option>
+            <option value="10"> DHL</option>
+            <option value="15"> Estafeta</option>
           </select>
           <label htmlFor="">
-            Promocode
-            <input type="text" placeholder="Enter your code" />
+            Códigos de descuento
+            <input type="text" placeholder="Ingresa tu código" />
           </label>
-          <button>Apply</button>
+          <button>Aplicar</button>
           <div className="order-total">
             <p>Total</p>
-            <p>$524</p>
+            <p>${total}</p>
           </div>
           <button>Checkout</button>
         </div>
