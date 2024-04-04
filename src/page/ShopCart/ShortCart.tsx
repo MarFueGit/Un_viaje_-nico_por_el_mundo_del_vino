@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { shopCartStore, ICartItem } from "../../state/shopCartStore";
 import EmptyCart from "../../components/EmptyCart/EmptyCart";
+import ShippingForm from "../../components/ShippingForm/ShippingForm";
 
 function ShortCart() {
   const products = shopCartStore((state) => state.wines);
   const quantity = shopCartStore((state) => state.quantity);
-  const total = shopCartStore((state) => state.total);
   const addProduct = shopCartStore((state) => state.addProduct);
   const deleteProduct = shopCartStore((state) => state.deleteProduct);
   const reduceProductQuantity = shopCartStore(
@@ -87,29 +87,7 @@ function ShortCart() {
             </tbody>
           </table>
         </div>
-        <div className="div-right">
-          <h2>Orden</h2>
-          <div className="items-right">
-            <p>Productos {quantity}</p>
-            <p>${total}</p>
-          </div>
-          <p>Entrega a domicilio</p>
-          <select name="" id="">
-            <option value="5"> Fedex</option>
-            <option value="10"> DHL</option>
-            <option value="15"> Estafeta</option>
-          </select>
-          <label htmlFor="">
-            Códigos de descuento
-            <input type="text" placeholder="Ingresa tu código" />
-          </label>
-          <button>Aplicar</button>
-          <div className="order-total">
-            <p>Total</p>
-            <p>${total}</p>
-          </div>
-          <button>Checkout</button>
-        </div>
+        <ShippingForm />
       </section>
     </>
   );
