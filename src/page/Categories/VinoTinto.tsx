@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import imgVino from "../../assets/img/pexels-photo-2878738.jpeg";
 import "./VinoTinto.css";
@@ -7,6 +7,7 @@ import { getWinesByTypeService } from "../../services/wines.service";
 import { IResponseWines } from "../../types/Wine";
 import Products from "../../components/Products";
 import Pagination from "../../components/Pagination";
+import useToken from "../../hooks/useToken";
 
 export default function VinoTinto() {
   const wines = wineStore((state) => state.wines.data);
@@ -16,9 +17,10 @@ export default function VinoTinto() {
 
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
+  const { getToken } = useToken();
 
   useEffect(() => {
-    getWinesByTypeService("Tinto", page, pageSize)
+    getWinesByTypeService("Tinto", page, pageSize, String(getToken()))
       .then((response: IResponseWines) => setWines(response?.response))
       .catch((error) => console.error(error));
   }, [page, pageSize]);

@@ -2,15 +2,18 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  margin-top: 10%;
+ 
 }
 
 .item-left {
-  width: 50%;
-  background: #ebedef;
+  width: 60%;
   margin: 1px;
   height: auto;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* sombra */
 }
 .subtitles-items {
   display: flex;
@@ -20,78 +23,6 @@
 }
 .subtitles-items p {
   font-size: 1.8rem;
-}
-.div-right {
-  width: 20%;
-  height: auto;
-  background-color: #d6dbdf;
-
-  color: var(--very-ligtt-pink);
-}
-.items-right {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 30px;
-}
-.items-right p {
-  line-height: 70px;
-}
-.div-right h2 {
-  text-align: center;
-  border-bottom: 2px solid var(--very-ligtt-pink);
-  font-size: 1.8rem;
-}
-.div-right p {
-  padding-left: 20px;
-}
-.div-right select {
-  width: 252px; /* Ancho personalizado */
-  padding: 10px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño de fuente */
-  border: 1px solid #8e2800; /* Borde */
-  border-radius: 5px; /* Borde redondeado */
-  background-color: #f9f9f9; /* Color de fondo */
-  color: var(--very-ligtt-pink);
-  margin-left: 20px;
-  margin-top: 20px;
-}
-.div-right label {
-  padding-left: 20px;
-  line-height: 40px;
-}
-/* Estilo al hacer clic en el select */
-select:focus {
-  outline: none; /* Eliminar el borde de enfoque */
-  border-color: #8e2800; /* Cambiar color del borde en enfoque */
-}
-.div-right input {
-  width: 252px;
-  padding: 10px;
-  margin-left: 20px;
-  border-radius: 6px;
-  border: 1px solid var(--hospital-green);
-}
-.div-right button {
-  margin-left: 20px;
-  padding: 5px;
-  width: 120px;
-  margin-top: 10px;
-  background: #ffb03b;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  color: var(--very-ligtt-pink);
-  margin-bottom: 5px;
-}
-.order-total {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 30px;
-  margin-top: 20px;
-  border-top: 2px solid var(--very-ligtt-pink);
-}
-.order-total p {
-  line-height: 40px;
 }
 
 .table {
@@ -125,7 +56,7 @@ select:focus {
 
 .table button {
   cursor: pointer;
-  width: 100px;
+  width: 140px;
   padding: 5px;
   height: auto;
   font-size: 1em;

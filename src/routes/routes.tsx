@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     element: <ShortCart />
   },
   {
-    path: "/product/details",
+    path: "/product/details/:productId",
     element: <ProductView />
   }
 ]);

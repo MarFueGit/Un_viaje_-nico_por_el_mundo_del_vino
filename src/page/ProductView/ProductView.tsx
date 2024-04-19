@@ -1,6 +1,6 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
-import "./ProductView.css"
+import "./ProductView.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -14,72 +14,81 @@ import imgUvas from "../../assets/img/uvas_dc641770-743a-416c-9c82-1b45e34121d1_
 import imgBarrica from "../../assets/img/pngtree-cute-wind-bucket-free-element-png-image_4121354.png";
 import imgAñadir from "../../assets/img/images-removebg-preview.png";
 import imgTemp from "../../assets/img/temperatura_0e4e152d-19ab-4e0d-acec-6e2fe7a0884a_icon.webp";
-import imgTinto from "../../assets/img/botellaVino-removebg-preview.png"
-
+import { useNavigate, useParams } from "react-router-dom";
+import { getWineDetails } from "../../services/wines.service";
+import { IWine } from "../../types/Wine";
+import useToken from "../../hooks/useToken";
 
 function ProductView() {
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  const [wine, setWine] = useState<IWine>();
+  const { getToken } = useToken();
+
+  useEffect(() => {
+    getWineDetails(String(productId), String(getToken()))
+      .then((data) => {
+        setWine(data.response);
+      })
+      .catch((error) => console.log("ERRROR: ", error));
+  }, [productId]);
+
   return (
-   <>
+    <>
       <Navbar />
       <section className="container-details">
-      <div className="img-left">
-        <img src={imgTinto} alt="imagen del vino" />
-      </div>
-      <div className="detail-right">
-        <h1>Pruno</h1>
-        <p>$ 350.00</p>
-        <p>
-          🚚Envio GRATIS en pedidos superiores a $2,000. Entrega de 2 a 5 dias
-          hábiles (excepto zonas extendidas).
-        </p>
-        <div className="agregar-cart">
-          <FontAwesomeIcon icon={faMinus} />
-          <span>1</span>
-          <FontAwesomeIcon icon={faPlus} />
-          <button>AGREGAR AL CARRITO</button>
+        <div className="img-left">
+          <button className="return" onClick={() => navigate("/")}>
+            Regresar
+          </button>
+          <img src={wine?.img} alt="imagen del vino" />
         </div>
-        <p>Pago seguro con :</p>
-        <div className="payment-methods">
-          <FontAwesomeIcon icon={faPaypal} />
-          <FontAwesomeIcon icon={faCcVisa} />
-          <FontAwesomeIcon icon={faCcMastercard} />
+        <div className="detail-right">
+          <h1>{wine?.name}</h1>
+          <p>$ {wine?.price}</p>
+          <p>{wine?.shippingInfo}</p>
+          <div className="agregar-cart">
+            <FontAwesomeIcon icon={faMinus} />
+            <span>1</span>
+            <FontAwesomeIcon icon={faPlus} />
+            <button>AGREGAR AL CARRITO</button>
+          </div>
+          <p>Pago seguro con :</p>
+          <div className="payment-methods">
+            <FontAwesomeIcon icon={faPaypal} />
+            <FontAwesomeIcon icon={faCcVisa} />
+            <FontAwesomeIcon icon={faCcMastercard} />
+          </div>
+          <p> {wine?.listInfo}</p>
+          <ul className="list-caracteristicas">
+            <li>
+              <img src={imgProduct} alt="logo de productor" width={"25px"} />
+              Productor: {wine?.productor}
+            </li>
+            <li>
+              <img src={imgLocation} alt="" width={"25px"} />
+              Origen: {wine?.origin}
+            </li>
+            <li>
+              <img src={imgUvas} alt="" width={"25px"} />
+              Uvas: {wine?.grapes}
+            </li>
+            <li>
+              <img src={imgBarrica} alt="" width={"25px"} />
+              Barrica: {wine?.barrica}
+            </li>
+            <li>
+              <img src={imgAñadir} alt="" width={"25px"} />
+              Añada: 2020
+            </li>
+            <li>
+              <img src={imgTemp} alt="" width={"25px"} />
+              Temperatura de servicio: {wine?.temperature}
+            </li>
+          </ul>
+          <p>{wine?.description}</p>
         </div>
-        <p> Vino tinto ensamble(Garnacha, Cariñera)España</p>
-        <p>93 puntos Guia peñin</p>
-        <p>91 puntos Robert Parker</p>
-       <p>Un excelente Priorat con elevados puntajes.</p>
-        <ul className="list-caracteristicas">
-          <li>
-            <img src={imgProduct} alt="logo de productor" width={"25px"} />
-            Productor: Ritme Celler
-          </li>
-          <li>
-            <img src={imgLocation} alt="" width={"25px"} />
-            Origen: D.O.Q Priorat, España
-          </li>
-          <li>
-            <img src={imgUvas} alt="" width={"25px"} />
-            Uvas: 55% Garnacha, 45% Cariñena
-          </li>
-          <li>
-            <img src={imgBarrica} alt="" width={"25px"} />
-            Barrica: 10 meses en barricas de roble frances, levemente tostadas
-          </li>
-          <li>
-            <img src={imgAñadir} alt="" width={"25px"} />
-            Añada: 2020
-          </li>
-          <li>
-            <img src={imgTemp} alt="" width={"25px"} />
-            Temperatura de servicio: 16C
-          </li>
-        </ul>
-        <p>
-          El vino Pruno es un vino tinto español producido por la bodega Finca
-          Villacreces en la región vinícola de Ribera del Duero.
-        </p>
-      </div>
-    </section>
+      </section>
     </>
   );
 }

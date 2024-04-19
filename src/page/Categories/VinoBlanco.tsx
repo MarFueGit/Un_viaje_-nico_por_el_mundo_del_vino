@@ -7,18 +7,20 @@ import { getWinesByTypeService } from "../../services/wines.service";
 import { IResponseWines } from "../../types/Wine";
 import Products from "../../components/Products";
 import Pagination from "../../components/Pagination";
+import useToken from "../../hooks/useToken";
 
 function VinoBlanco() {
   const wines = wineStore((state) => state.wines.data);
   const setWines = wineStore((state) => state.setWines);
   const nextPage = wineStore((state) => state.wines.nextPage);
   const prevPage = wineStore((state) => state.wines.prevPage);
+  const { getToken } = useToken();
 
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
 
   useEffect(() => {
-    getWinesByTypeService("Blanco", page, pageSize)
+    getWinesByTypeService("Blanco", page, pageSize, String(getToken()))
       .then((response: IResponseWines) => setWines(response?.response))
       .catch((error) => console.error(error));
   }, [page, pageSize]);

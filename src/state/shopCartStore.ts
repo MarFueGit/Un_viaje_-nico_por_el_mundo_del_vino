@@ -15,6 +15,7 @@ interface IShopCartState {
   addProduct: (product: IWine, quantity: number) => void;
   deleteProduct: (productId: string) => void;
   reduceProductQuantity: (productId: string, quantity: number) => void;
+  resetShopCart: () => void;
 }
 
 export const shopCartStore = create<IShopCartState>(
@@ -90,6 +91,13 @@ export const shopCartStore = create<IShopCartState>(
               0
             );
           }
+        });
+      },
+      resetShopCart: () => {
+        set((state: IShopCartState) => {
+          state.quantity = 0;
+          state.total = 0;
+          state.wines = [];
         });
       }
     })),

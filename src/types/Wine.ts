@@ -3,6 +3,14 @@ export interface IWine {
   type: string;
   price: number;
   img: string;
+  barrica: string;
+  description: string;
+  grapes: string;
+  listInfo: string;
+  origin: string;
+  productor: string;
+  shippingInfo: string;
+  temperature: string;
   id: string;
 }
 
@@ -18,5 +26,33 @@ export interface IResponseWines {
     nextPage: number | null;
     prevPage: number | null;
   };
+  code: number;
+}
+
+export interface IResponseWineDetail {
+  ok: boolean;
+  message: string;
+  response: {
+    name: string;
+    type: string;
+    price: number;
+    img: string;
+    barrica: string;
+    description: string;
+    grapes: string;
+    listInfo: string;
+    origin: string;
+    productor: string;
+    shippingInfo: string;
+    temperature: string;
+    id: string;
+  };
+  code: number;
+}
+
+export interface IResponseOrders {
+  ok: boolean;
+  message: string;
+  response: object;
   code: number;
 }

@@ -21,7 +21,7 @@ function Products({ data }: ProductsProps) {
             <img
               src={wine.img}
               alt="imagen de vino"
-              onClick={() => navigate("/product/details")}
+              onClick={() => navigate(`/product/details/${wine.id}`)}
             />
             <p>{wine.name}</p>
             <p>{wine.type}</p>
