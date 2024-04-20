@@ -7,14 +7,17 @@ import { shopCartStore } from "../state/shopCartStore";
 //Declaramos las props que va recibir products
 interface ProductsProps {
   data: IWine[];
+  titleProducts: string;
 }
 
-function Products({ data }: ProductsProps) {
+function Products({ data, titleProducts }: ProductsProps) {
   const navigate = useNavigate();
   const addProduct = shopCartStore((state) => state.addProduct);
   return (
     <>
-      <h1 className="subtitle">ESCOGE TU VINO FAVORITO</h1>
+      <h1 className="subtitle">
+        {titleProducts ? titleProducts : "ESCOGE TU VINO FAVORITO"}
+      </h1>
       <section id="products">
         {data?.map((wine: IWine) => (
           <div className={`list-products ${wine.type}`} key={wine.id}>

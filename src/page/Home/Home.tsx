@@ -18,6 +18,7 @@ function Home() {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
   const { getToken } = useToken();
+  const searching = wineStore((state) => state.searching);
 
   useEffect(() => {
     getWinesService(page, pageSize, String(getToken()))
@@ -25,13 +26,23 @@ function Home() {
       .catch((error) => console.error(error));
   }, [page, pageSize]);
 
+  const getTitleProducts = () => {
+    if (wines?.length === 0) {
+      return "No se encontraron vinos";
+    } else if (searching) {
+      return "Buscando ...";
+    } else {
+      return "ESCOGE TU VINO FAVORITO";
+    }
+  };
+
   return (
     <main>
       <section className="section_home">
         <h2 className="title">UN VIAJE ÚNICO POR EL MUNDO DEL VINO</h2>
         <img src={imgVino} alt="imagen vino" />
       </section>
-      <Products data={wines} />
+      <Products data={wines} titleProducts={getTitleProducts()} />
       <Pagination
         page={page}
         pageSize={pageSize}

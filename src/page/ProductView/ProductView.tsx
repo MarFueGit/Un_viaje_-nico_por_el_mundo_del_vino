@@ -18,12 +18,29 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getWineDetails } from "../../services/wines.service";
 import { IWine } from "../../types/Wine";
 import useToken from "../../hooks/useToken";
+import { shopCartStore } from "../../state/shopCartStore";
 
 function ProductView() {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const [wine, setWine] = useState<IWine>();
+  const [wine, setWine] = useState<IWine>({
+    name: "",
+    type: "",
+    price: 0,
+    img: "",
+    barrica: "",
+    description: "",
+    grapes: "",
+    listInfo: "",
+    origin: "",
+    productor: "",
+    shippingInfo: "",
+    temperature: "",
+    id: ""
+  });
   const { getToken } = useToken();
+  const addProduct = shopCartStore((state) => state.addProduct);
+  const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
     getWineDetails(String(productId), String(getToken()))
@@ -48,10 +65,18 @@ function ProductView() {
           <p>$ {wine?.price}</p>
           <p>{wine?.shippingInfo}</p>
           <div className="agregar-cart">
-            <FontAwesomeIcon icon={faMinus} />
-            <span>1</span>
-            <FontAwesomeIcon icon={faPlus} />
-            <button>AGREGAR AL CARRITO</button>
+            <FontAwesomeIcon
+              icon={faMinus}
+              onClick={() => setQuantity(quantity === 1 ? 1 : quantity - 1)}
+            />
+            <span>{quantity}</span>
+            <FontAwesomeIcon
+              icon={faPlus}
+              onClick={() => setQuantity(quantity + 1)}
+            />
+            <button onClick={() => addProduct(wine, quantity)}>
+              AGREGAR AL CARRITO
+            </button>
           </div>
           <p>Pago seguro con :</p>
           <div className="payment-methods">

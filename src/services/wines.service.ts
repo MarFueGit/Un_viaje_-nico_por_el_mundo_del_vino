@@ -77,3 +77,30 @@ export const getWineDetails = (
       throw err;
     });
 };
+
+export const searchByNameService = (
+  name: string,
+  page: number,
+  pageSize: number,
+  token: string
+): Promise<IResponseWines> => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  };
+
+  return fetch(
+    `https://codigo-facilito-api-vinos-1023f56b3ed9.herokuapp.com/api/wines/searchByName?name=${name}&page=${page}&pageSize=${pageSize}`,
+    options
+  )
+    .then((response) => response.json())
+    .then((data: IResponseWines) => {
+      return data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
