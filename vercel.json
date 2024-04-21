@@ -1,16 +1,5 @@
 {
-  "builds": [{ "src": "package.json", "use": "@vercel/node" }],
-  "functions": {
-    "preinstall": {
-      "runtime": "@now/node",
-      "memory": 512,
-      "maxDuration": 30,
-      "includeFiles": "package.json",
-      "package": {
-        "scripts": {
-          "install": "npm install --legacy-peer-deps"
-        }
-      }
-    }
+  "scripts": {
+    "preinstall": "npm install --legacy-peer-deps"
   }
 }
