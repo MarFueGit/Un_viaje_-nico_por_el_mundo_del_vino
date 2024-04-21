@@ -1,7 +1,6 @@
 # example netlify.toml
 [build]
   command = "npm install --legacy-peer-deps && npm run build"  # Add the --legacy-peer-deps flag here
-  command = "npm run build"
   functions = "netlify/functions"
   publish = "dist"
 
