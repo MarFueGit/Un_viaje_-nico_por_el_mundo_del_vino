@@ -46,7 +46,7 @@ function ShortCart() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product: ICartItem, i: number) => (
+              {products?.map((product: ICartItem, i: number) => (
                 <tr key={i}>
                   <td data-label="imagen">
                     <img

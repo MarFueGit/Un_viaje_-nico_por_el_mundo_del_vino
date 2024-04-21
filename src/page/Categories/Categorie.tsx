@@ -11,23 +11,32 @@ import useToken from "../../hooks/useToken";
 import { getWinesByTypeService } from "../../services/wines.service";
 import { IResponseWines } from "../../types/Wine";
 import { useParams } from "react-router-dom";
-import { getDescriptionCategorie, getTitleCategorie } from ".";
+import { getDescriptionCategorie, getTitleCategorie } from "./index";
 
 export default function Categorie() {
-  const { typeWine } = useParams<{ typeWine: string }>(); // Tipado de typeWine como string
+  const { typeWine } = useParams<{ typeWine: string }>();
   const wines = wineStore((state) => state.wines.data);
   const setWines = wineStore((state) => state.setWines);
   const nextPage = wineStore((state) => state.wines.nextPage);
   const prevPage = wineStore((state) => state.wines.prevPage);
   const { getToken } = useToken();
 
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number | null>(null); // Initialize with null
+
   const [pageSize, setPageSize] = useState<number>(5);
 
   useEffect(() => {
-    getWinesByTypeService(String(typeWine), page, pageSize, String(getToken()))
-      .then((response: IResponseWines) => setWines(response?.response))
-      .catch((error) => console.error(error));
+    if (page !== null) {
+      // Ensure page is not null
+      getWinesByTypeService(
+        String(typeWine),
+        page,
+        pageSize,
+        String(getToken())
+      )
+        .then((response: IResponseWines) => setWines(response?.response))
+        .catch((error) => console.error(error));
+    }
   }, [page, pageSize, getToken, setWines, typeWine]);
 
   const getImage = () =>
@@ -40,14 +49,17 @@ export default function Categorie() {
       <Navbar />
       <h1>{getTitleCategorie(typeWine)}</h1>
       <div className={`wine`}>
-        <img src={getImage()} alt={`imagen del vino ${typeWine}`} />
+        <img src={getImage()} alt={`imagen del vino`} data-testid='click-vino'/>
         <DescriptionComponent />
       </div>
-      <Products data={wines} />
+      <Products data={wines} titleProducts="ESCOGE TU VINO FAVORITO" />
       <Pagination
         page={page}
         pageSize={pageSize}
-        onChangePageSize={(page: number) => setPageSize(page)}
+        onChangePageSize={(page: number) => {
+          setPage(page);
+          setPageSize(page); // Update pageSize when changing page
+        }}
         onNext={() => setPage(nextPage)}
         onBack={() => setPage(prevPage)}
         disabledBack={prevPage === null}

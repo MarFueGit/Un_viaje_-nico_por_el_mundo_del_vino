@@ -31,12 +31,13 @@ export default function ShippingForm() {
   const resetShopCart = shopCartStore((state) => state.resetShopCart);
   const { getToken } = useToken();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    if (Object.keys(errors).length > 0) {
+    console.log("ERROS: ", errors); // Move console.log here to ensure errors is logged correctly
+    if (!errors || Object.keys(errors).length === 0) {
+      setOrder(data);
+      setShowConfirm(true);
+    } else {
       toast.error("Por favor, verifica los campos del formulario.");
-      return;
     }
-    setOrder(data);
-    setShowConfirm(true);
   };
 
   const sendOrder = async () => {
@@ -45,11 +46,10 @@ export default function ShippingForm() {
       const response = await sendOrderService(order, String(getToken()));
       console.log("RESPONSE: ", response);
       toast.success("¡Orden enviada con éxito!");
-     
+
       setTimeout(() => {
         resetShopCart();
       }, 5000);
-     
     } catch (error) {
       console.log("ERROR AL ENVIAR LA ORDEN: ", error);
       toast.error(

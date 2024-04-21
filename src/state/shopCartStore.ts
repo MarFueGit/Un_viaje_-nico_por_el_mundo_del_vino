@@ -1,3 +1,4 @@
+// @ts-ignore
 import { devOnlyDevtools as devtools } from "./devTools";
 import { immer } from "zustand/middleware/immer";
 import { create } from "zustand";

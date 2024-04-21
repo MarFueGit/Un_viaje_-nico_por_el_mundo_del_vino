@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface PaginationProps {
-  page: number;
+  page: number | null;
   pageSize: number;
   onChangePageSize: (pageSize: number) => void;
   onNext: () => void;
@@ -40,11 +40,19 @@ function Pagination({
         <option value="100">100 registros por pág</option>
       </select>
       <div className="icono-pagination">
-        <button onClick={() => onBack()} disabled={disabledBack}>
+        <button
+          onClick={() => onBack()}
+          disabled={disabledBack}
+          data-testid="Previous page"
+        >
           <FontAwesomeIcon icon={faChevronCircleLeft} />
         </button>
         <p>Página {page}</p>
-        <button onClick={() => onNext()} disabled={disabledNext}>
+        <button
+          onClick={() => onNext()}
+          disabled={disabledNext}
+          data-testid="Next page"
+        >
           <FontAwesomeIcon icon={faChevronCircleRight} />
         </button>
       </div>

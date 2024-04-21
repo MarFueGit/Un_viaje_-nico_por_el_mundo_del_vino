@@ -1,7 +1,7 @@
 import { IResponseWineDetail, IResponseWines } from "../types/Wine";
 
 export const getWinesService = (
-  page: number,
+  page: number | null,
   pageSize: number,
   token: string
 ): Promise<IResponseWines> => {
@@ -28,7 +28,7 @@ export const getWinesService = (
 
 export const getWinesByTypeService = (
   wineType: string,
-  page: number,
+  page: number | null,
   pageSize: number,
   token: string
 ): Promise<IResponseWines> => {

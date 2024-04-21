@@ -1,21 +1,44 @@
 import React from "react";
-import LogoMenu from "../assets/icons/icon_menu.svg";
-import LogoYard from "../assets/img/imagenVino-removebg-preview.png";
-import IconCart from "../assets/icons/icon_shopping_cart.svg";
 import "./Navbar.css";
 import Search from "./Search";
 import { useNavigate } from "react-router-dom";
 import { shopCartStore } from "../state/shopCartStore";
+import LogoMenu from "../assets/icons/icon_menu.jpg";
+import LogoYard from "../assets/img/imagenVino-removebg-preview.png";
+import IconCart from "../assets/icons/icon_shopping_cart-removebg-preview.png";
 
 export default function Navbar() {
+  function MenuIcon() {
+    return <img src={LogoMenu} alt="menu" className="menu" />;
+  }
+
+  function CartIcon() {
+    return (
+      <img
+        data-testid="carrito de compra"
+        src={IconCart}
+        alt="carrito de compra"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate("/shopCart");
+        }}
+      />
+    );
+  }
+
+  function LogoIcon() {
+    return <img className="logo" src={LogoYard} alt="logo" />;
+  }
+
   const quantity = shopCartStore((state) => state.quantity);
   const navigate = useNavigate();
+
   return (
     <div>
       <nav>
-        <img src={LogoMenu} alt="menu" className="menu" />
+        <MenuIcon />
         <div className="navbar-left">
-          <img src={LogoYard} alt="logo" className="logo" />
+          <LogoIcon />
           <ul>
             <li>
               <a
@@ -63,14 +86,7 @@ export default function Navbar() {
         <div className="navbar-right">
           <ul>
             <li className="navbar-shopping-cart">
-              <img
-                src={IconCart}
-                alt="carrito de compra"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate("/shopCart");
-                }}
-              />
+              <CartIcon />
               <div>{quantity}</div>
             </li>
           </ul>

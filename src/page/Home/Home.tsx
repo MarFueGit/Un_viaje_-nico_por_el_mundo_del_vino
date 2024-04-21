@@ -6,16 +6,16 @@ import { IResponseWines } from "../../types/Wine";
 import Products from "../../components/Products";
 import Pagination from "../../components/Pagination";
 import Categories from "../../components/Categories";
-import { wineStore } from "../../state/wineStore";
+import { IWineState, wineStore } from "../../state/wineStore";
 import Footer from "../../components/Footer";
 import useToken from "../../hooks/useToken";
 
 function Home() {
-  const wines = wineStore((state) => state.wines.data);
+  const wines = wineStore((state: IWineState) => state.wines.data);
   const setWines = wineStore((state) => state.setWines);
   const nextPage = wineStore((state) => state.wines.nextPage);
   const prevPage = wineStore((state) => state.wines.prevPage);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number | null>(1);
   const [pageSize, setPageSize] = useState<number>(5);
   const { getToken } = useToken();
   const searching = wineStore((state) => state.searching);
@@ -42,7 +42,7 @@ function Home() {
         <h2 className="title">UN VIAJE ÚNICO POR EL MUNDO DEL VINO</h2>
         <img src={imgVino} alt="imagen vino" />
       </section>
-      <Products data={wines} titleProducts={getTitleProducts()} />
+      <Products data={wines || []} titleProducts={getTitleProducts()} />
       <Pagination
         page={page}
         pageSize={pageSize}

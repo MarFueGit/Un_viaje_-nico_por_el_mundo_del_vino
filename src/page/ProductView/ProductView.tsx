@@ -8,12 +8,12 @@ import {
   faCcVisa,
   faCcMastercard
 } from "@fortawesome/free-brands-svg-icons";
-import imgProduct from "../../assets/img/Productor_62673555-1404-480b-8c48-e0fcfb161f4b_icon.webp";
+import imgProduct from "../../assets/img/Productor_62673555-1404-480b-8c48-e0fcfb161f4b_icon.jpg";
 import imgLocation from "../../assets/img/49f7f01089a3ed59e4c3bc341a06ce2d.jpg";
-import imgUvas from "../../assets/img/uvas_dc641770-743a-416c-9c82-1b45e34121d1_large.webp";
+import imgUvas from "../../assets/img/uvas_dc641770-743a-416c-9c82-1b45e34121d1_large.jpg";
 import imgBarrica from "../../assets/img/pngtree-cute-wind-bucket-free-element-png-image_4121354.png";
 import imgAñadir from "../../assets/img/images-removebg-preview.png";
-import imgTemp from "../../assets/img/temperatura_0e4e152d-19ab-4e0d-acec-6e2fe7a0884a_icon.webp";
+import imgTemp from "../../assets/img/temperatura_0e4e152d-19ab-4e0d-acec-6e2fe7a0884a_icon.jpg";
 import { useNavigate, useParams } from "react-router-dom";
 import { getWineDetails } from "../../services/wines.service";
 import { IWine } from "../../types/Wine";
