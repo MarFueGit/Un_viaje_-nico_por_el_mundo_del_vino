@@ -3,36 +3,35 @@ footer {
   align-items: center;
   flex-direction: column;
   height: 50vh; /* Ajusta la altura según tus necesidades */
- 
 }
 footer .logo {
   width: 120px;
   padding-top: 20px;
 }
-footer h1{
-   line-height: 10px;
+footer h1 {
+  line-height: 10px;
 }
-.social-media{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 50px; 
-   padding-bottom: 40px;
-   font-size: 30px;
-  
-   
+.social-media {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  padding-bottom: 40px;
+  font-size: 30px;
+}
+.social-media a{
+   color: #468966;
 }
 .terminos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-   gap: 50px;   
-   letter-spacing: 1px;
-}
-footer span{
-    padding-top: 50px;
-   letter-spacing: 3px;
-   font-size: 1.2rem;
-   
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  letter-spacing: 1px;
+  color: #5D6D7E;
 }
 
-
-
+footer span {
+  padding-top: 50px;
+  letter-spacing: 3px;
+  font-size: 1.2rem;
+  color: #5D6D7E;
+}

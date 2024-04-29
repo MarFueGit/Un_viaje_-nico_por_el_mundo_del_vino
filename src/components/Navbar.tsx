@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { shopCartStore } from "../state/shopCartStore";
 import LogoMenu from "../assets/icons/icon_menu.jpg";
 import LogoYard from "../assets/img/imagenVino-removebg-preview.png";
-import IconCart from "../assets/icons/icon_shopping_cart-removebg-preview.png";
+import IconCart from "../assets/icons/shoppingcart_80945.png";
 
 export default function Navbar() {
   function MenuIcon() {
@@ -34,7 +34,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <section>
       <nav>
         <MenuIcon />
         <div className="navbar-left">
@@ -92,6 +92,6 @@ export default function Navbar() {
           </ul>
         </div>
       </nav>
-    </div>
+    </section>
   );
 }

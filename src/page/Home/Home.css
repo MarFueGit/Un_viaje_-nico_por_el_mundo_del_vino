@@ -9,8 +9,9 @@
  transform: translateY(-50%);
  z-index: 1;
  position: absolute;
- top: 450px;
+ top: 90%;
  left: 5%;
+ bottom: 0;
  color: white;
  letter-spacing: 10px;
 }

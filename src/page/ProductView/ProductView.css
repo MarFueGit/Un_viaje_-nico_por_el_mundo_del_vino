@@ -28,10 +28,15 @@
   display: flex;
   justify-content: end;
   height: 100%;
+ 
 }
 .img-left img {
   height: 450px;
   object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.img-left img:hover {
+  transform: scale(1.1);
 }
 .detail-right h1 {
   text-align: left;
@@ -44,9 +49,9 @@
 }
 .detail-right p {
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 .agregar-cart {
-  padding-top: 30px;
   display: flex;
 }
 .detail-right svg {
@@ -65,13 +70,8 @@
   border: none;
   background: #ffb03b;
 }
-.payment-methods {
-  padding-top: 6px;
-  padding-bottom: 20px;
-}
-.list-caracteristicas {
-  padding-top: 30px;
-}
+
+
 .list-caracteristicas li {
   line-height: 30px;
 }
